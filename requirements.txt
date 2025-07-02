@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+openpyxl           # for reading .xlsx files
+torch              # install correct version for your system
+torchvision
+PyYAML             # for config loading
+tqdm               # progress bar

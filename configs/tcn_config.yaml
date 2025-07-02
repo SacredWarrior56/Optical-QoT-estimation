@@ -1,0 +1,12 @@
+input_size: 3               # Power, CD, Q-factor (at past steps)
+output_size: 2              # Predict Q-factor and CD
+sequence_length: 24         # 6 hours of history (15 min * 24 = 6hr)
+num_channels: [64, 64, 64]  # TCN depth
+kernel_size: 3
+dropout: 0.2
+
+learning_rate: 0.001
+batch_size: 64
+num_epochs: 50
+
+save_path: outputs/models/best_model.pt
