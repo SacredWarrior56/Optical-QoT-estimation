@@ -1,0 +1,17 @@
+#ignore word documents
+MY LEARNINGS FROM SCRATCH.docx
+
+#ignore config files
+
+
+#ignore data files
+channel_97_segment_3.txt
+channel_98_segment_3.txt
+channel_99_segment_3.txt
+
+#ignore other files
+check_cuda.py
+outputs/models/
+requirements.txt
+
+
