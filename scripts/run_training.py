@@ -1,10 +1,11 @@
 import os
+import sys
 import yaml
 import torch
 import pandas as pd
 from torch.utils.data import DataLoader
 from sklearn.model_selection import train_test_split
-
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from src.train_eval.trainer import TCNTrainer
 from src.data_preprocessing.windowing import TimeSeriesDataset
 from src.train_eval.metrics import evaluate_regression, print_metrics
@@ -26,8 +27,8 @@ for file in os.listdir(PROCESSED_PATH):
     data = pd.read_csv(os.path.join(PROCESSED_PATH, file))
 
     # Features and targets
-    features = data[['qfactor', 'power', 'cd']].values
-    targets = data[['qfactor', 'cd']].values
+    features = data[['power', 'cd']].values
+    targets = data[['qfactor']].values
 
     # Train/val split
     train_feat, val_feat, train_tgt, val_tgt = train_test_split(
@@ -44,7 +45,7 @@ for file in os.listdir(PROCESSED_PATH):
 
     # Update save path to be per channel
     base_name = file.replace(".csv", "")
-    model_path = f"outputs/models/{base_name}_tcn.pth"
+    model_path = f"outputs/models/{base_name}_tcn_WITHOUT_pmd.pth"
     config['save_path'] = model_path
 
     # Train model
